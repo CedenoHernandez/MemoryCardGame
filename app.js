@@ -73,7 +73,7 @@ function beginGame() {
 
 
 function matchCard(card1, card2) {
-    if (card1.firstElementChild.className === card2.firstElementChild.className) {
+    if (card1.firstElementChild.className === card2.firstElementChild.className && card1 != card2) {
     card1.classList.add('match');
     card2.classList.add('match');
     totalMatched.push(1); // each 1 represents a paired match in the array
