@@ -1,0 +1,159 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+  }
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffffff url('img/tiny-squares.png');
+  font-family: 'Baloo Bhai', cursive;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: 'Baloo Bhai', cursive;
+  font-size: 100px;
+  border: solid;
+  border-radius: 20px;
+  border-width: 5px;
+  background: linear-gradient(160deg, #ff8d30 20%, #ffb57a 100%);
+  box-shadow: 5px 2px 15px 0px #703600;
+}
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #ff8d30 20%, #ffb57a 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 15px 0px #703600;
+}
+
+.deck .card.open {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+    animation: shake 0.5s;
+}
+
+ /* Shake animation from: https://www.w3schools.com/howto/howto_css_shake_image.asp */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+    font-size: 2em;
+    color: orange;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+    font-size: 2em;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+	top: 100px;
+	bottom: 50px;
+	left: 0;
+	right: 0;
+  margin: 100px auto;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+	width: 50%;
+  text-align: center;
+  border: solid;
+  border-width: 3px;
+  border-radius: 5px;
+}
+
+button {
+  background-color:#02ccba;
+  font-size: 2em;
+  font-family: 'Baloo Bhai';
+  border-radius: 5px;
+  border: solid;
+  border-width: 3px;
+  cursor: pointer;
+}
