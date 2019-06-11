@@ -28,7 +28,7 @@ allCards.forEach(allCards => allCards.addEventListener('click', flipCard));
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -44,23 +44,24 @@ function shuffle(array) {
 function flipCard() {
     this.classList.add('open', 'show');
     openedCards.push(1);
-    if (flippedCard && openedCards.length == 1) { //checks if there is a match once 2 cards are flipped over
+    safetyCheck();
+    if (flippedCard && openedCards.length == 2) { //checks if there is a match once 2 cards are flipped over
       if (!matchCard(flippedCard, this)) {
         setTimeout(() => {
           this.classList.remove('open', 'show');
           flippedCard.classList.remove('open', 'show');
           flippedCard = null;
-          openedCards = []; //resets array to ensure line 47 works again
+          openedCards = []; //resets array to ensure line 46 works again
+          resetSafetyCheck();
         }, 1100); //so cards don't immediately disappear
       }
     } else {
       flippedCard = this;
       moveCounter();
       starRating();
-      openedCards = []; // resets array to ensure line 47 works again
-      }
+      resetSafetyCheck();
+    }
 };
-
 
 function beginGame() {
   let shuffledCards = shuffle(cards);
@@ -71,12 +72,27 @@ function beginGame() {
   }
 }
 
+//deactivates clicking ability once 2 cards have been chosen
+function safetyCheck () {
+ if (openedCards.length == 2) {
+   document.querySelector('.deck').style.pointerEvents = "none";
+ }
+}
+
+//restores clicking ability after a match
+function resetSafetyCheck() {
+  if (openedCards.length == 0 || openedCards.length == 1) {
+    document.querySelector('.deck').style.pointerEvents = "auto";
+  }
+}
 
 function matchCard(card1, card2) {
-    if (card1.firstElementChild.className === card2.firstElementChild.className && card1 != card2) {
+  if (card1.firstElementChild.className === card2.firstElementChild.className && card1 != card2) { //prevents card from matching with itself
     card1.classList.add('match');
     card2.classList.add('match');
     totalMatched.push(1); // each 1 represents a paired match in the array
+    openedCards = [];
+    resetSafetyCheck();
     endGame();
     return true
   } else return false
@@ -131,7 +147,6 @@ replay.addEventListener('click', function() {
   seconds = 0;
   minutes = 0;
 });
-
 
 function endGame() {
   if (totalMatched.length == 8) { //checks to see if all cards have been matched before launching modal and endgame

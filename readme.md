@@ -5,7 +5,11 @@ Turn over cards two at a time to find a match. The game is completed when all
 8 pairs have been matched. Race against the clock and see how high of a rating
 you can achieve.
 
-### Version 1.0
+### Version History
+---
+  * 1.0 - initial release
+  * 1.1 - fixed bug that allowed the same card to be selected twice
+  * 1.2 - fixed bug which allowed for more than 2 cards to be selected at once
 
 ## How to Play
 ---
@@ -15,9 +19,6 @@ Download the ZIP file from here. Open the code in a web browser and play from th
 ---
 Completed for Udacity's Front End Development Nanodegree.
 
-## Bugs
+## Dependencies
 ---
-The current build of the game allows for more than 2 cards to be turned over
-at once (if you can click fast enough). Be wary if you intentionally click over
-multiple cards at once; you may need to reload the page for proper functionality
-to be restored.
+This project was completed without any third-party dependencies.
