@@ -135,12 +135,9 @@ h1 {
 
 .modal {
   display: none;
-  position: fixed;
-	top: 100px;
-	bottom: 50px;
-	left: 0;
-	right: 0;
-  margin: 6rem auto;
+  position: absolute;
+  margin: 0 auto;
+  margin-top: 9rem;
 	padding: 2rem;
 	background: #ffffff;
 	border-radius: 5px;
